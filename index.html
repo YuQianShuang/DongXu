@@ -5,7 +5,7 @@
     </head>  
     <body>  
         <h1>dongxu</h1>  
-        <p>import pandas as pd  
+        <pre>import pandas as pd  
 from sklearn.model_selection import train_test_split, StratifiedKFold  
 from sklearn.preprocessing import StandardScaler, LabelEncoder  
 from sklearn.ensemble import RandomForestRegressor  
@@ -54,6 +54,6 @@ rmse = np.sqrt(mean_squared_error(y_test, predictions))
 print(f'Root Mean Squared Error: {rmse}')  
   
 # 可视化呈现结果  
-sns.lineplot(x='iteration', y='target', data=pd.DataFrame(data['target'].values), color='blue') # 用seaborn绘制回归结果曲线图，此处需要提供具体的迭代次数（iteration）列以及目标变量（target）列的数据，可以将其替换为您的实际数据列名。</p>  
+sns.lineplot(x='iteration', y='target', data=pd.DataFrame(data['target'].values), color='blue') # 用seaborn绘制回归结果曲线图，此处需要提供具体的迭代次数（iteration）列以及目标变量（target）列的数据，可以将其替换为您的实际数据列名。</pre>  
     </body>  
 </html>
