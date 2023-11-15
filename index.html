@@ -43,6 +43,55 @@ Y_pre = dt.predict(X_test)
 #计算决策树准确率
 accuracy = accuracy_score(Y_test,Y_pre)
 print('accuracy is', accuracy)
+            -----------
+from sklearn.linear_model import LinearRegression
+from sklearn import metrics
+import pandas as pd
+from sklearn.model_selection import train_test_split
+import numpy as np
+
+data1 = pd.read_csv('winequality-red.csv',sep = ';')
+data2 = pd.read_csv('winequality-white.csv',sep = ';')
+
+X = data1[["fixed acidity","volatile acidity","citric acid","residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol"]]
+Y = data1["quality"]
+x = data2[["fixed acidity","volatile acidity","citric acid","residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol"]]
+y = data2["quality"]
+
+lm = LinearRegression()
+lm.fit(X,Y)
+aim_pre = lm.predict(x)
+
+#求R方
+print('R^2 = ', np.sqrt(metrics.mean_squared_error(y, aim_pre)))
+#每个特征对目标变量的影响程度
+print('每个特征对目标变量的影响程度为', lm.coef_)
+#在所有特征都为0时，目标变量的预测值
+print(lm.intercept_)
+
+import statsmodels.api as sm
+est = sm.OLS(y,x).fit()
+print(est.summary())
+
+import matplotlib.pyplot as plt
+plt.plot(aim_pre)
+plt.show()
+
+            ----
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score,classification_report
+
+X_train,X_test,Y_train,Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
+
+dt = DecisionTreeClassifier()
+dt.fit(X_train, Y_train)
+Y_pre = dt.predict(X_test)
+
+#计算决策树准确率
+accuracy = accuracy_score(Y_test,Y_pre)
+print('accuracy is', accuracy)
+
+print(classification_report(Y_test,Y_pre))
 </pre>  
     </body>  
 </html>
